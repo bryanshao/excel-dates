@@ -2,13 +2,10 @@ dependencies:
   "lib.dates_to_strings": "dts"
 
 extract:
-  # - step:
-  #   action: debug.Breakpoint
-
   - step: Download the data via HTTP
     action: extract.source.http.DownloadFiles
     fetch:
-      - "http://127.0.0.1:8080/input.xls"
+      - "https://raw.githubusercontent.com/enigmadocs/excel-dates/master/input.xls"
 
   - step: Set output schema
     action: transform.schema.SetSchema
@@ -25,9 +22,6 @@ extract:
   - step: Extract fields from file
     action: extract.formats.xls.ReadRecords
     timezone: US/Eastern
-
-  - step: Write the record
-    action: debug.LogValues
 
 transform:
   - step: Remove header row
@@ -51,18 +45,6 @@ transform:
 
   - step: Write the record
     action: debug.LogValues
-
-  # - step: Convert date of birth
-  #   action: transform.conversion.ParseDatetime
-  #   store_unparsed: yes
-  #   fields:
-  #     - field_name: DOB
-  #       formats:
-  #         - "M/D/YYYY"
-  #         - "MM/DD/YYYY"
-  #         - "MMM D, YYYY"
-  #         - "MMMM D, YYYY"
-  #       date_only: yes
 
   - step: Convert datetime objects and decimals to strings
     action: dts.DatesToStrings

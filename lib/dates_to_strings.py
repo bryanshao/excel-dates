@@ -15,8 +15,6 @@ class DatesToStrings(parsekit.Step):
 
     def run(self, record, metadata):
         schema = metadata.get_closest('schema')
-        name = self.context['name']
-        self.log.info(name)
         for field in self.options.fields:
             field_idx = schema.field_index(field)
             field_val = record[field_idx]
