@@ -1,0 +1,16 @@
+###
+# Parsefile for excel-dates
+# 2017-08-29
+###
+
+name: crawl-download
+description: "Parse and Excel file and convert dates"
+maintainers:
+  - Peter Henderson <name@domain.com>
+version: "1.0.0"
+license: none
+source_urls:
+  - "http://example.org/example.csv"
+
+extract:
+  - data.yaml
