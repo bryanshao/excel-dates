@@ -71,6 +71,14 @@ transform:
   - step: Write the transformed record
     action: debug.LogValues
 
-  - step: Save locally
-    action: load.OutputCSV
-    repository: .
+load:
+  - step: Set the datapath
+    action: load.SetTableName
+    table_name: concourse.demo.citibike
+
+  - step: Send to Assembly
+    action: load.OutputAbstract
+    trusted: yes
+    db_boundary: concourse.demo
+    repository: '{ context.repository }'
+    credentials: '{ context.credentials }'
