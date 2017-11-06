@@ -74,7 +74,7 @@ transform:
 load:
   - step: Set the datapath
     action: load.SetTableName
-    table_name: concourse.demo.citibike
+    table_name: concourse.demo.excel
 
   - step: Send to Assembly
     action: load.OutputAbstract
